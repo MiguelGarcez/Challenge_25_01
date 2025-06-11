@@ -3,6 +3,8 @@ package com.ancora.mechanicapp.presentation;
 import com.ancora.mechanicapp.application.PartService;
 import com.ancora.mechanicapp.application.QuoteItemService;
 import com.ancora.mechanicapp.application.ServiceOrderService;
+import com.ancora.mechanicapp.application.OrderService;
+import com.ancora.mechanicapp.domain.model.Order;
 import com.ancora.mechanicapp.domain.model.QuoteItem;
 import jakarta.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +19,18 @@ public class QuoteItemController {
     private final QuoteItemService service;
     private final PartService partService;
     private final ServiceOrderService serviceOrderService;
+    private final OrderService orderService;
     @Autowired
     private Validator validator;
 
     public QuoteItemController(QuoteItemService service,
                                PartService partService,
-                               ServiceOrderService serviceOrderService) {
+                               ServiceOrderService serviceOrderService,
+                               OrderService orderService) {
         this.service = service;
         this.partService = partService;
         this.serviceOrderService = serviceOrderService;
+        this.orderService = orderService;
     }
 
     @GetMapping
@@ -87,5 +92,15 @@ public class QuoteItemController {
         var soId = qi.getServiceOrder().getId();
         service.delete(id);
         return "redirect:/quote-items?so=" + soId;
+    }
+
+    @PostMapping("/convert")
+    public String convert(@RequestParam Long serviceOrderId) {
+        var so = serviceOrderService.get(serviceOrderId);
+        for (var item : service.listByServiceOrder(so)) {
+            orderService.save(new Order(item.getPart(), item.getQuantity()));
+            service.delete(item.getId());
+        }
+        return "redirect:/orders";
     }
 }

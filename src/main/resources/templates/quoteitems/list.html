@@ -41,6 +41,11 @@
             </tbody>
         </table>
 
+        <form th:if="${quoteItems}" th:action="@{/quote-items/convert}" method="post" style="margin-top:1rem;">
+            <input type="hidden" name="serviceOrderId" th:value="${selectedSo}"/>
+            <button class="btn" type="submit">Converter em Pedido</button>
+        </form>
+
         <a class="btn btn-secondary back" th:href="@{/home}">Voltar</a>
     </div>
 </div>
