@@ -92,6 +92,7 @@ Aplicação disponível em **http://localhost:8080**
 | `/orders`  | CRUD de Pedidos    |
 | `/service-orders` | Abrir/selecionar OS |
 | `/catalog` | Buscar Peças |
+| `/quote-items` | Carrinho de Cotação |
 | `/login`   | Autenticação       |
 
 ---
@@ -103,6 +104,7 @@ BRAND   (id PK, name)~~~~
 PART    (id PK, brand_id FK, model, year)
 ORDERS  (id PK, part_id FK, quantity, created_at)
 SERVICE_ORDER (id PK, description, created_at)
+QUOTE_ITEM (id PK, service_order_id FK, part_id FK, quantity)
 ```
 
 * Chave primária `IDENTITY`.  
