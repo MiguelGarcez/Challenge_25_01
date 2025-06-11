@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Ordem de Serviço</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1 th:text="${serviceOrder.id == null ? 'Abrir OS' : 'Editar OS'}"></h1>
+
+        <form th:action="@{/service-orders}" th:object="${serviceOrder}" method="post">
+            <div th:if="${#fields.hasErrors('*')}" class="alert">
+                <ul><li th:each="err:${#fields.errors('*')}" th:text="${err}"></li></ul>
+            </div>
+
+            <input type="hidden" th:if="${serviceOrder.id}" th:field="*{id}"/>
+
+            <div class="form-group">
+                <label for="desc">Descrição</label>
+                <input id="desc" type="text" th:field="*{description}"/>
+                <span class="error" th:errors="*{description}"></span>
+            </div>
+
+            <button class="btn" type="submit">Salvar</button>
+            <a class="btn btn-secondary back" th:href="@{/service-orders}">Cancelar</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

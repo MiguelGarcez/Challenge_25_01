@@ -11,6 +11,7 @@ Sistema exemplo em **Java 17 / Spring Boot 3** que aplica _Domain‑Driven Desig
 | **Marcas** | Listar, criar, editar, excluir | Nome obrigatório e único |
 | **Peças** | Listar, criar, editar, excluir | Marca obrigatória, modelo e ano obrigatórios |
 | **Pedidos** | Listar, criar, editar, excluir | Peça obrigatória, quantidade mínima = 1 |
+| **Ordens de Serviço** | Abrir, editar, excluir | Descrição obrigatória |
 
 Recursos adicionais:
 
@@ -89,6 +90,7 @@ Aplicação disponível em **http://localhost:8080**
 | `/brands`  | CRUD de Marcas     |
 | `/parts`   | CRUD de Peças     |
 | `/orders`  | CRUD de Pedidos    |
+| `/service-orders` | Abrir/selecionar OS |
 | `/login`   | Autenticação       |
 
 ---
@@ -99,6 +101,7 @@ Aplicação disponível em **http://localhost:8080**
 BRAND   (id PK, name)~~~~
 PART    (id PK, brand_id FK, model, year)
 ORDERS  (id PK, part_id FK, quantity, created_at)
+SERVICE_ORDER (id PK, description, created_at)
 ```
 
 * Chave primária `IDENTITY`.  

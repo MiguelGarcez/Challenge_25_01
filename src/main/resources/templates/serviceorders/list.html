@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Ordens de Serviço</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>Ordens de Serviço</h1>
+        <a class="btn" th:href="@{/service-orders/new}">Nova OS</a>
+
+        <table class="table">
+            <thead><tr><th>ID</th><th>Descrição</th><th>Criada em</th><th>Ações</th></tr></thead>
+            <tbody>
+            <tr th:each="so : ${serviceOrders}">
+                <td data-label="ID" th:text="${so.id}"></td>
+                <td data-label="Descrição" th:text="${so.description}"></td>
+                <td data-label="Criada em" th:text="${so.createdAt}"></td>
+                <td data-label="Ações">
+                    <div class="actions">
+                        <a class="btn" th:href="@{|/service-orders/${so.id}/edit|}">Editar</a>
+                        <form class="inline" th:action="@{|/service-orders/${so.id}/delete|}" method="post">
+                            <button class="btn btn-secondary">Excluir</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a class="btn btn-secondary back" th:href="@{/home}">Voltar</a>
+    </div>
+</div>
+</body>
+</html>
