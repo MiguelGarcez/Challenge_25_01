@@ -93,6 +93,7 @@ Aplicação disponível em **http://localhost:8080**
 | `/service-orders` | Abrir/selecionar OS |
 | `/catalog` | Buscar Peças |
 | `/quote-items` | Carrinho de Cotação |
+| `/quote-items/convert` | Converter cotação em pedido |
 | `/login`   | Autenticação       |
 
 ---
