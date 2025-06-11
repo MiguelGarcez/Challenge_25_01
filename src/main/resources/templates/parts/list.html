@@ -3,27 +3,27 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>Veículos</title>
+    <title>Peças</title>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <div class="container">
     <div class="card">
-        <h1>Veículos</h1>
-        <a class="btn" th:href="@{/vehicles/new}">Novo Veículo</a>
+        <h1>Peças</h1>
+        <a class="btn" th:href="@{/parts/new}">Nova Peça</a>
 
         <table class="table">
             <thead><tr><th>ID</th><th>Marca</th><th>Modelo</th><th>Ano</th><th>Ações</th></tr></thead>
             <tbody>
-            <tr th:each="v:${vehicles}">
-                <td data-label="ID" th:text="${v.id}"></td>
-                <td data-label="Marca" th:text="${v.brand.name}"></td>
-                <td data-label="Modelo" th:text="${v.model}"></td>
-                <td data-label="Ano" th:text="${v.year}"></td>
+            <tr th:each="p:${parts}">
+                <td data-label="ID" th:text="${p.id}"></td>
+                <td data-label="Marca" th:text="${p.brand.name}"></td>
+                <td data-label="Modelo" th:text="${p.model}"></td>
+                <td data-label="Ano" th:text="${p.year}"></td>
                 <td data-label="Ações">
                     <div class="actions">
-                        <a class="btn" th:href="@{|/vehicles/${v.id}/edit|}">Editar</a>
-                        <form class="inline" th:action="@{|/vehicles/${v.id}/delete|}" method="post">
+                        <a class="btn" th:href="@{|/parts/${p.id}/edit|}">Editar</a>
+                        <form class="inline" th:action="@{|/parts/${p.id}/delete|}" method="post">
                             <button class="btn btn-secondary">Excluir</button>
                         </form>
                     </div>

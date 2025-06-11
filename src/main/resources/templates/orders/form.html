@@ -19,9 +19,9 @@
             <input type="hidden" th:if="${order.id}" th:field="*{id}"/>
 
             <div class="form-group">
-                <label for="vehicleId">Veículo</label>
-                <select id="vehicleId" name="vehicleId">
-                    <option th:each="v:${vehicles}" th:value="${v.id}" th:text="${v.model}"></option>
+                <label for="partId">Peça</label>
+                <select id="partId" name="partId">
+                    <option th:each="p:${parts}" th:value="${p.id}" th:text="${p.model}"></option>
                 </select>
             </div>
 

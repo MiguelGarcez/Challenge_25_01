@@ -1,6 +1,6 @@
 # MechanicApp
 
-Sistema exemplo em **Java 17 / Spring Boot 3** que aplica _Domain‑Driven Design_ (DDD) a um CRUD completo de **Marcas**, **Veículos** e **Pedidos**, com autenticação via Spring Security, validação de dados (Bean‑Validation) e persistência em **Oracle Database**.
+Sistema exemplo em **Java 17 / Spring Boot 3** que aplica _Domain‑Driven Design_ (DDD) a um CRUD completo de **Marcas**, **Peças** e **Pedidos**, com autenticação via Spring Security, validação de dados (Bean‑Validation) e persistência em **Oracle Database**.
 
 ---
 
@@ -9,8 +9,8 @@ Sistema exemplo em **Java 17 / Spring Boot 3** que aplica _Domain‑Driven Desig
 | Módulo | Ações | Validações principais |
 | ------ | ----- | --------------------- |
 | **Marcas** | Listar, criar, editar, excluir | Nome obrigatório e único |
-| **Veículos** | Listar, criar, editar, excluir | Marca obrigatória, modelo e ano obrigatórios |
-| **Pedidos** | Listar, criar, editar, excluir | Veículo obrigatório, quantidade mínima = 1 |
+| **Peças** | Listar, criar, editar, excluir | Marca obrigatória, modelo e ano obrigatórios |
+| **Pedidos** | Listar, criar, editar, excluir | Peça obrigatória, quantidade mínima = 1 |
 
 Recursos adicionais:
 
@@ -87,7 +87,7 @@ Aplicação disponível em **http://localhost:8080**
 | ---------- | ------------------ |
 | `/home`    | Menu principal     |
 | `/brands`  | CRUD de Marcas     |
-| `/vehicles`| CRUD de Veículos   |
+| `/parts`   | CRUD de Peças     |
 | `/orders`  | CRUD de Pedidos    |
 | `/login`   | Autenticação       |
 
@@ -97,8 +97,8 @@ Aplicação disponível em **http://localhost:8080**
 
 ```
 BRAND   (id PK, name)~~~~
-VEHICLE (id PK, brand_id FK, model, year)
-ORDERS  (id PK, vehicle_id FK, quantity, created_at)
+PART    (id PK, brand_id FK, model, year)
+ORDERS  (id PK, part_id FK, quantity, created_at)
 ```
 
 * Chave primária `IDENTITY`.  

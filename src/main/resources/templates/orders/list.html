@@ -13,11 +13,11 @@
         <a class="btn" th:href="@{/orders/new}">Novo Pedido</a>
 
         <table class="table">
-            <thead><tr><th>ID</th><th>Veículo</th><th>Qtd</th><th>Criado em</th><th>Ações</th></tr></thead>
+            <thead><tr><th>ID</th><th>Peça</th><th>Qtd</th><th>Criado em</th><th>Ações</th></tr></thead>
             <tbody>
             <tr th:each="o:${orders}">
                 <td data-label="ID" th:text="${o.id}"></td>
-                <td data-label="Veículo" th:text="${o.vehicle.model}"></td>
+                <td data-label="Peça" th:text="${o.part.model}"></td>
                 <td data-label="Qtd" th:text="${o.quantity}"></td>
                 <td data-label="Criado em" th:text="${o.createdAt}"></td>
                 <td data-label="Ações">

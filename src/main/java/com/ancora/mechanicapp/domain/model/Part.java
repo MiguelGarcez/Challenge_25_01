@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-public class Vehicle {
+public class Part {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(optional = false)
@@ -18,8 +18,8 @@ public class Vehicle {
     @jakarta.validation.constraints.Min(value = 1900, message = "Ano inválido")
     private Integer year;
 
-    public Vehicle() {}
-    public Vehicle(Brand brand, String model, Integer year) {
+    public Part() {}
+    public Part(Brand brand, String model, Integer year) {
         this.brand = brand; this.model = model; this.year = year;
     }
     public Long getId() { return id; }
