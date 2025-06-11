@@ -12,6 +12,6 @@ Este arquivo monitora o progresso de funcionalidades no projeto. As etapas têm 
 | 6 | Criar entidade e repositório de Ordem de Serviço (OS) | Concluída | Alta | 1 |
 | 7 | Tela para abrir/selecionar OS | Concluída | Alta | 6 |
 | 8 | Implementar busca de peças em catálogo | Concluída | Alta | 4 |
-| 9 | Montar carrinho de cotação | Pendente | Alta | 6,8 |
+| 9 | Montar carrinho de cotação | Em andamento | Alta | 6,8 |
 |10| Converter cotação em pedido | Pendente | Alta | 9 |
 

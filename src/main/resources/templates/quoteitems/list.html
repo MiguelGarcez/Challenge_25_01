@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Carrinho de Cotação</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>Carrinho de Cotação</h1>
+
+        <form th:action="@{/quote-items}" method="get" style="margin-bottom:1rem;">
+            <label for="so">OS:</label>
+            <select id="so" name="so" onchange="this.form.submit()">
+                <option th:each="so : ${serviceOrders}" th:value="${so.id}" th:text="${so.description}" th:selected="${so.id == selectedSo}"></option>
+            </select>
+            <noscript><button class="btn" type="submit">Selecionar</button></noscript>
+        </form>
+
+        <a class="btn" th:href="@{/quote-items/new}">Adicionar Item</a>
+
+        <table class="table" th:if="${quoteItems}">
+            <thead><tr><th>ID</th><th>OS</th><th>Peça</th><th>Qtd</th><th>Ações</th></tr></thead>
+            <tbody>
+            <tr th:each="qi:${quoteItems}">
+                <td data-label="ID" th:text="${qi.id}"></td>
+                <td data-label="OS" th:text="${qi.serviceOrder.description}"></td>
+                <td data-label="Peça" th:text="${qi.part.model}"></td>
+                <td data-label="Qtd" th:text="${qi.quantity}"></td>
+                <td data-label="Ações">
+                    <div class="actions">
+                        <a class="btn" th:href="@{|/quote-items/${qi.id}/edit|}">Editar</a>
+                        <form class="inline" th:action="@{|/quote-items/${qi.id}/delete|}" method="post">
+                            <button class="btn btn-secondary">Excluir</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a class="btn btn-secondary back" th:href="@{/home}">Voltar</a>
+    </div>
+</div>
+</body>
+</html>
