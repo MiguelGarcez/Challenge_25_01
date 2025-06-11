@@ -3,20 +3,20 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>Veículo</title>
+    <title>Peça</title>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <body>
 <div class="container">
     <div class="card">
-        <h1 th:text="${vehicle.id == null ? 'Criar Veículo' : 'Editar Veículo'}"></h1>
+        <h1 th:text="${part.id == null ? 'Criar Peça' : 'Editar Peça'}"></h1>
 
-        <form th:action="@{/vehicles}" th:object="${vehicle}" method="post">
+        <form th:action="@{/parts}" th:object="${part}" method="post">
             <div th:if="${#fields.hasErrors('*')}" class="alert">
                 <ul><li th:each="err:${#fields.errors('*')}" th:text="${err}"></li></ul>
             </div>
 
-            <input type="hidden" th:if="${vehicle.id}" th:field="*{id}"/>
+            <input type="hidden" th:if="${part.id}" th:field="*{id}"/>
 
             <div class="form-group">
                 <label for="brandId">Marca</label>
@@ -38,7 +38,7 @@
             </div>
 
             <button class="btn" type="submit">Salvar</button>
-            <a class="btn btn-secondary back" th:href="@{/vehicles}">Cancelar</a>
+            <a class="btn btn-secondary back" th:href="@{/parts}">Cancelar</a>
         </form>
     </div>
 </div>
