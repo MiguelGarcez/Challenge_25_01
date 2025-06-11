@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body class="full-center">
+<div class="card" style="max-width:420px;width:100%;">
+    <h1 style="text-align:center;margin-bottom:1.75rem;">Acesso ao Sistema</h1>
+
+    <form th:action="@{/login}" method="post">
+        <div class="form-group">
+            <label for="user">Usuário</label>
+            <input id="user" type="text" name="username" autocomplete="username"/>
+        </div>
+
+        <div class="form-group">
+            <label for="pass">Senha</label>
+            <input id="pass" type="password" name="password" autocomplete="current-password"/>
+        </div>
+
+        <button class="btn" style="width:100%;" type="submit">Entrar</button>
+    </form>
+
+    <a class="btn btn-secondary back" style="width:100%;text-align:center;" href="javascript:history.back()">Voltar</a>
+</div>
+</body>
+</html>

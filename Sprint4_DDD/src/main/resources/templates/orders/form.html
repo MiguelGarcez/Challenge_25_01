@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Pedido</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1 th:text="${order.id == null ? 'Criar Pedido' : 'Editar Pedido'}"></h1>
+
+        <form th:action="@{/orders}" th:object="${order}" method="post">
+            <div th:if="${#fields.hasErrors('*')}" class="alert">
+                <ul><li th:each="err:${#fields.errors('*')}" th:text="${err}"></li></ul>
+            </div>
+
+            <input type="hidden" th:if="${order.id}" th:field="*{id}"/>
+
+            <div class="form-group">
+                <label for="vehicleId">Veículo</label>
+                <select id="vehicleId" name="vehicleId">
+                    <option th:each="v:${vehicles}" th:value="${v.id}" th:text="${v.model}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="qtd">Quantidade</label>
+                <input id="qtd" type="number" th:field="*{quantity}"/>
+                <span class="error" th:errors="*{quantity}"></span>
+            </div>
+
+            <button class="btn" type="submit">Salvar</button>
+            <a class="btn btn-secondary back" th:href="@{/orders}">Cancelar</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Marca</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1 th:text="${brand.id == null ? 'Criar Marca' : 'Editar Marca'}"></h1>
+
+        <form th:action="@{/brands}" th:object="${brand}" method="post">
+            <div th:if="${#fields.hasErrors('*')}" class="alert">
+                <ul><li th:each="err:${#fields.errors('*')}" th:text="${err}"></li></ul>
+            </div>
+
+            <input type="hidden" th:if="${brand.id}" th:field="*{id}"/>
+
+            <div class="form-group">
+                <label for="name">Nome</label>
+                <input id="name" type="text" th:field="*{name}"/>
+                <span class="error" th:errors="*{name}"></span>
+            </div>
+
+            <button class="btn" type="submit">Salvar</button>
+            <a class="btn btn-secondary back" th:href="@{/brands}">Cancelar</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

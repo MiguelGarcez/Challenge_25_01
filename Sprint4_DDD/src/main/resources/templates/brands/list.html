@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Marcas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>Marcas</h1>
+        <a class="btn" th:href="@{/brands/new}">Nova Marca</a>
+
+        <table class="table">
+            <thead><tr><th>ID</th><th>Nome</th><th>Ações</th></tr></thead>
+            <tbody>
+            <tr th:each="b : ${brands}">
+                <td data-label="ID" th:text="${b.id}"></td>
+                <td data-label="Nome" th:text="${b.name}"></td>
+                <td data-label="Ações">
+                    <div class="actions">
+                        <a class="btn" th:href="@{|/brands/${b.id}/edit|}">Editar</a>
+                        <form class="inline" th:action="@{|/brands/${b.id}/delete|}" method="post">
+                            <button class="btn btn-secondary">Excluir</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a class="btn btn-secondary back" th:href="@{/home}">Voltar</a>
+    </div>
+</div>
+</body>
+</html>

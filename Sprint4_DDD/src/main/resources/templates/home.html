@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Menu</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="card" style="text-align:center">
+        <h1>Menu Principal</h1>
+
+        <div class="menu" style="justify-content:center;margin-top:1.5rem;">
+            <a class="btn" th:href="@{/brands}">Marcas</a>
+            <a class="btn" th:href="@{/vehicles}">Veículos</a>
+            <a class="btn" th:href="@{/orders}">Pedidos</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

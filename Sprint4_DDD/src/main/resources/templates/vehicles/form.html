@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Veículo</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1 th:text="${vehicle.id == null ? 'Criar Veículo' : 'Editar Veículo'}"></h1>
+
+        <form th:action="@{/vehicles}" th:object="${vehicle}" method="post">
+            <div th:if="${#fields.hasErrors('*')}" class="alert">
+                <ul><li th:each="err:${#fields.errors('*')}" th:text="${err}"></li></ul>
+            </div>
+
+            <input type="hidden" th:if="${vehicle.id}" th:field="*{id}"/>
+
+            <div class="form-group">
+                <label for="brandId">Marca</label>
+                <select id="brandId" name="brandId">
+                    <option th:each="b:${brands}" th:value="${b.id}" th:text="${b.name}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="model">Modelo</label>
+                <input id="model" type="text" th:field="*{model}"/>
+                <span class="error" th:errors="*{model}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="year">Ano</label>
+                <input id="year" type="number" th:field="*{year}"/>
+                <span class="error" th:errors="*{year}"></span>
+            </div>
+
+            <button class="btn" type="submit">Salvar</button>
+            <a class="btn btn-secondary back" th:href="@{/vehicles}">Cancelar</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>
