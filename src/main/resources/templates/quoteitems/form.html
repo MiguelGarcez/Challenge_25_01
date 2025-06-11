@@ -21,7 +21,7 @@
             <div class="form-group">
                 <label for="serviceOrderId">OS</label>
                 <select id="serviceOrderId" name="serviceOrderId">
-                    <option th:each="so:${serviceOrders}" th:value="${so.id}" th:text="${so.description}"></option>
+                    <option th:each="so:${serviceOrders}" th:value="${so.id}" th:text="${so.description}" th:selected="${so.id == selectedSo}"></option>
                 </select>
             </div>
 
