@@ -91,6 +91,7 @@ Aplicação disponível em **http://localhost:8080**
 | `/parts`   | CRUD de Peças     |
 | `/orders`  | CRUD de Pedidos    |
 | `/service-orders` | Abrir/selecionar OS |
+| `/catalog` | Buscar Peças |
 | `/login`   | Autenticação       |
 
 ---
