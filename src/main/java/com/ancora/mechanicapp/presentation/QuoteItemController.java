@@ -48,10 +48,16 @@ public class QuoteItemController {
     }
 
     @GetMapping("/new")
-    public String createForm(Model model) {
-        model.addAttribute("quoteItem", new QuoteItem());
+    public String createForm(@RequestParam(name = "serviceOrderId", required = false) Long soId,
+                             Model model) {
+        var qi = new QuoteItem();
+        if (soId != null) {
+            qi.setServiceOrder(serviceOrderService.get(soId));
+        }
+        model.addAttribute("quoteItem", qi);
         model.addAttribute("parts", partService.list());
         model.addAttribute("serviceOrders", serviceOrderService.list());
+        model.addAttribute("selectedSo", soId);
         return "quoteitems/form";
     }
 
@@ -71,6 +77,7 @@ public class QuoteItemController {
         if (result.hasErrors()) {
             model.addAttribute("parts", partService.list());
             model.addAttribute("serviceOrders", serviceOrderService.list());
+            model.addAttribute("selectedSo", serviceOrderId);
             return "quoteitems/form";
         }
 
@@ -80,9 +87,11 @@ public class QuoteItemController {
 
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable Long id, Model model) {
-        model.addAttribute("quoteItem", service.get(id));
+        var qi = service.get(id);
+        model.addAttribute("quoteItem", qi);
         model.addAttribute("parts", partService.list());
         model.addAttribute("serviceOrders", serviceOrderService.list());
+        model.addAttribute("selectedSo", qi.getServiceOrder().getId());
         return "quoteitems/form";
     }
 

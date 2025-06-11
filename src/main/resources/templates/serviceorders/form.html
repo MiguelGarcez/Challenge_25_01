@@ -24,6 +24,30 @@
                 <span class="error" th:errors="*{description}"></span>
             </div>
 
+            <div class="form-group">
+                <label for="plate">Placa do Carro</label>
+                <input id="plate" type="text" th:field="*{carPlate}"/>
+                <span class="error" th:errors="*{carPlate}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="model">Modelo do Carro</label>
+                <input id="model" type="text" th:field="*{carModel}"/>
+                <span class="error" th:errors="*{carModel}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="customerName">Nome do Cliente</label>
+                <input id="customerName" type="text" th:field="*{customerName}"/>
+                <span class="error" th:errors="*{customerName}"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="customerContact">Contato do Cliente</label>
+                <input id="customerContact" type="text" th:field="*{customerContact}"/>
+                <span class="error" th:errors="*{customerContact}"></span>
+            </div>
+
             <button class="btn" type="submit">Salvar</button>
             <a class="btn btn-secondary back" th:href="@{/service-orders}">Cancelar</a>
         </form>

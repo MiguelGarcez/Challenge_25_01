@@ -13,14 +13,30 @@
         <a class="btn" th:href="@{/service-orders/new}">Nova OS</a>
 
         <table class="table">
-            <thead><tr><th>ID</th><th>Descrição</th><th>Criada em</th><th>Ações</th></tr></thead>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descrição</th>
+                <th>Placa</th>
+                <th>Modelo</th>
+                <th>Cliente</th>
+                <th>Contato</th>
+                <th>Criada em</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
             <tbody>
             <tr th:each="so : ${serviceOrders}">
                 <td data-label="ID" th:text="${so.id}"></td>
                 <td data-label="Descrição" th:text="${so.description}"></td>
+                <td data-label="Placa" th:text="${so.carPlate}"></td>
+                <td data-label="Modelo" th:text="${so.carModel}"></td>
+                <td data-label="Cliente" th:text="${so.customerName}"></td>
+                <td data-label="Contato" th:text="${so.customerContact}"></td>
                 <td data-label="Criada em" th:text="${so.createdAt}"></td>
                 <td data-label="Ações">
                     <div class="actions">
+                        <a class="btn" th:href="@{|/quote-items/new?serviceOrderId=${so.id}|}">Adicionar Item</a>
                         <a class="btn" th:href="@{|/service-orders/${so.id}/edit|}">Editar</a>
                         <form class="inline" th:action="@{|/service-orders/${so.id}/delete|}" method="post">
                             <button class="btn btn-secondary">Excluir</button>
