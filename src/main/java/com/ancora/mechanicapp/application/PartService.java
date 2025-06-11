@@ -13,4 +13,7 @@ public class PartService {
     public Part get(Long id){ return repo.findById(id).orElse(null); }
     public Part save(Part p){ return repo.save(p); }
     public void delete(Long id){ repo.deleteById(id); }
+    public List<Part> search(String term){
+        return repo.findByModelContainingIgnoreCase(term);
+    }
 }

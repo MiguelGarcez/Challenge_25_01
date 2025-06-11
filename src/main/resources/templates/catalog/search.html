@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Catálogo de Peças</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h1>Catálogo de Peças</h1>
+
+        <form th:action="@{/catalog}" method="get" style="margin-bottom:1rem;">
+            <input type="text" name="q" th:value="${param.q}" placeholder="Buscar modelo"/>
+            <button class="btn" type="submit">Buscar</button>
+        </form>
+
+        <table class="table" th:if="${results}">
+            <thead><tr><th>ID</th><th>Marca</th><th>Modelo</th><th>Ano</th></tr></thead>
+            <tbody>
+            <tr th:each="p:${results}">
+                <td data-label="ID" th:text="${p.id}"></td>
+                <td data-label="Marca" th:text="${p.brand.name}"></td>
+                <td data-label="Modelo" th:text="${p.model}"></td>
+                <td data-label="Ano" th:text="${p.year}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a class="btn btn-secondary back" th:href="@{/home}">Voltar</a>
+    </div>
+</div>
+</body>
+</html>
